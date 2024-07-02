@@ -42,6 +42,7 @@ use App\Http\Controllers\form_elements\BasicInput;
 use App\Http\Controllers\form_elements\InputGroups;
 use App\Http\Controllers\form_layouts\VerticalForm;
 use App\Http\Controllers\form_layouts\HorizontalForm;
+use App\Http\Controllers\JobsController;
 use App\Http\Controllers\tables\Basic as TablesBasic;
 
 Route::get('login', [LoginBasic::class, 'index'])->name('login');
@@ -51,8 +52,11 @@ Route::post('sign-out', [LoginBasic::class, 'destroy'])->middleware('auth')->nam
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [Analytics::class, 'index'])->name('dashboard');
     Route::get('/dashboard', [Analytics::class, 'index'])->name('dashboard');
+
+    Route::get('/jobs', [JobsController::class, 'index'])->name('jobs');
 });
 
+Route::get('/job-list', [JobsController::class, 'index'])->name('jobs');
 
 // Main Page Route
 // Route::get('/', [Analytics::class, 'index'])->name('dashboard-analytics');

@@ -10,7 +10,7 @@
       "name": "Jobs",
       "icon": "menu-icon tf-icons bx bx-briefcase bx-flashing-hover",
       "slug": "jobs",
-      "url": "/"
+      "url": "/jobs"
     },
     {
       "name": "Progress",

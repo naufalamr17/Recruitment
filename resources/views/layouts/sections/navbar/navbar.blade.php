@@ -41,10 +41,12 @@ $navbarDetached = ($navbarDetached ?? '');
 
         <!-- Spacer to push logout button to the right -->
         <div class="ms-auto d-flex align-items-center">
+          @auth
           <!-- Tombol Logout -->
           <a href="#" class="btn bg-label-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="bx bx-log-out"></i>
           </a>
+          @endauth
         </div>
       </div>
 
