@@ -111,16 +111,23 @@
                     <div class="badge bg-danger">{{ $job->status }}</div>
                     @endif
                 </div>
-                <p class="card-text"><small class="text-muted">Periode Pendaftaran: {{ Carbon\Carbon::parse($job->start_recruitment)->format('d M Y') }} - {{ Carbon\Carbon::parse($job->end_recruitment)->format('d M Y') }} <br> Terbuka Untuk: {{ $job->people_needed }} Orang</small></p>
+                <p class="card-text"><small class="text-muted">Periode Pendaftaran: {{ Carbon\Carbon::parse($job->start_recruitment)->format('d M Y') }} - {{ Carbon\Carbon::parse($job->end_recruitment)->format('d M Y') }} <br> Terbuka Untuk: {{ $job->people_needed }} Orang <br> Kontak: {{ $job->contact }}</small></p>
                 <hr>
                 <p class="card-text">
                     <strong>Requirement:</strong>
-                    <small class="card-text d-block mb-2">
-                        {!! nl2br(e($job->requirement)) !!}
+                    <small class="card-text d-block">
+                        <?php
+                        $requirements = explode("\n", $job->requirement); // Pisahkan teks berdasarkan baris
+                        echo "<ul>"; // Mulai daftar ul
+                        foreach ($requirements as $requirement) {
+                            $requirement = trim($requirement); // Hapus spasi ekstra
+                            if (!empty($requirement)) {
+                                echo "<li>$requirement</li>"; // Tambahkan setiap item sebagai daftar li
+                            }
+                        }
+                        echo "</ul>"; // Tutup daftar ul
+                        ?>
                     </small>
-                </p>
-                <p class="mt-2">
-                    <span class="me-2"><i class="bx bx-phone-call"></i></span>{{ $job->contact }}
                 </p>
                 @auth
                 @if (Auth::user()->role === 'admin')
