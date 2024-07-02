@@ -7,6 +7,23 @@
 @endsection
 
 @section('content')
+
+@if ($errors->any())
+<div class="alert alert-danger" role="alert">
+    <ul class="mb-0">
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
 <div class="d-flex justify-content-between align-items-center pb-1 mb-4">
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         Filter by Status
@@ -41,7 +58,7 @@
                         <label class="form-label" for="basic-icon-default-fullname">Position</label>
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                            <input type="text" name="position" class="form-control" id="basic-icon-default-fullname" placeholder="Job Position" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2"/>
+                            <input type="text" name="position" class="form-control" id="basic-icon-default-fullname" placeholder="Job Position" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" />
                         </div>
                     </div>
                     <div class="mb-3">
