@@ -135,68 +135,70 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form action="{{ route('jobs.update', $job->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="mb-3">
-                                        <label class="form-label" for="basic-icon-default-fullname">Position</label>
+                                        <label class="form-label" for="position-{{ $job->id }}">Position</label>
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Job Position" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" />
+                                            <span id="position-icon-{{ $job->id }}" class="input-group-text"><i class="bx bx-buildings"></i></span>
+                                            <input type="text" name="position" class="form-control" id="position-{{ $job->id }}" value="{{ $job->position }}" placeholder="Job Position" />
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="basic-icon-default-message">Requirement</label>
+                                        <label class="form-label" for="requirement-{{ $job->id }}">Requirement</label>
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-message2" class="input-group-text"><i class="bx bx-list-ul"></i></span>
-                                            <textarea id="basic-icon-default-message" class="form-control" placeholder="Job Requirement" aria-describedby="basic-icon-default-message2"></textarea>
+                                            <span id="requirement-icon-{{ $job->id }}" class="input-group-text"><i class="bx bx-list-ul"></i></span>
+                                            <textarea name="requirement" id="requirement-{{ $job->id }}" class="form-control" placeholder="Job Requirement">{{ $job->requirement }}</textarea>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="basic-icon-default-phone">Start Recruitment</label>
+                                        <label class="form-label" for="start_recruitment-{{ $job->id }}">Start Recruitment</label>
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-calendar-alt"></i></span>
-                                            <input type="date" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
+                                            <span id="start-icon-{{ $job->id }}" class="input-group-text"><i class="bx bx-calendar-alt"></i></span>
+                                            <input type="date" name="start_recruitment" id="start_recruitment-{{ $job->id }}" class="form-control" value="{{ $job->start_recruitment }}" />
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="basic-icon-default-phone">End Recruitment</label>
+                                        <label class="form-label" for="end_recruitment-{{ $job->id }}">End Recruitment</label>
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-calendar-alt"></i></span>
-                                            <input type="date" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
+                                            <span id="end-icon-{{ $job->id }}" class="input-group-text"><i class="bx bx-calendar-alt"></i></span>
+                                            <input type="date" name="end_recruitment" id="end_recruitment-{{ $job->id }}" class="form-control" value="{{ $job->end_recruitment }}" />
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="basic-icon-default-phone">People Needed</label>
+                                        <label class="form-label" for="people_needed-{{ $job->id }}">People Needed</label>
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-user"></i></span>
-                                            <input type="number" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Number of people needed" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
+                                            <span id="people-icon-{{ $job->id }}" class="input-group-text"><i class="bx bx-user"></i></span>
+                                            <input type="number" name="people_needed" id="people_needed-{{ $job->id }}" class="form-control" value="{{ $job->people_needed }}" />
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="basic-icon-default-phone">Contact</label>
+                                        <label class="form-label" for="contact-{{ $job->id }}">Contact</label>
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span>
-                                            <input type="number" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
+                                            <span id="contact-icon-{{ $job->id }}" class="input-group-text"><i class="bx bx-phone"></i></span>
+                                            <input type="text" name="contact" id="contact-{{ $job->id }}" class="form-control" value="{{ $job->contact }}" />
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <small class="text-light fw-medium d-block">Status</small>
                                         <div class="form-check form-check-inline mt-3">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-                                            <label class="form-check-label badge bg-label-success" for="inlineRadio1">Open</label>
+                                            <input class="form-check-input" type="radio" name="status" id="status-open-{{ $job->id }}" value="open" {{ $job->status === 'Open' ? 'checked' : '' }} />
+                                            <label class="form-check-label badge bg-label-success" for="status-open-{{ $job->id }}">Open</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                                            <label class="form-check-label badge bg-label-secondary" for="inlineRadio2">Hold</label>
+                                            <input class="form-check-input" type="radio" name="status" id="status-hold-{{ $job->id }}" value="hold" {{ $job->status === 'Hold' ? 'checked' : '' }} />
+                                            <label class="form-check-label badge bg-label-secondary" for="status-hold-{{ $job->id }}">Hold</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" />
-                                            <label class="form-check-label badge bg-label-danger" for="inlineRadio3">Closed</label>
+                                            <input class="form-check-input" type="radio" name="status" id="status-closed-{{ $job->id }}" value="closed" {{ $job->status === 'Closed' ? 'checked' : '' }} />
+                                            <label class="form-check-label badge bg-label-danger" for="status-closed-{{ $job->id }}">Closed</label>
                                         </div>
                                     </div>
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Send</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </form>
                             </div>
