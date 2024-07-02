@@ -97,15 +97,30 @@
     </div>
 </div>
 <div class="row" data-masonry='{"percentPosition": true }'>
+    @foreach($jobs as $job)
     <div class="col-sm-6 col-lg-4 mb-4">
         <div class="card">
-            <div class="card-header">
-                Jobs
-            </div>
             <div class="card-body">
-                <h5 class="card-title">Job Position</h5>
+                <div class="d-flex justify-content-between align-items-start">
+                    <h5>{{ $job->position }}</h5>
+                    @if($job->status == 'Open')
+                    <div class="badge bg-success">{{ $job->status }}</div>
+                    @elseif($job->status == 'Hold')
+                    <div class="badge bg-secondary">{{ $job->status }}</div>
+                    @elseif($job->status == 'Closed')
+                    <div class="badge bg-danger">{{ $job->status }}</div>
+                    @endif
+                </div>
+                <p class="card-text"><small class="text-muted">Periode Pendaftaran: {{ Carbon\Carbon::parse($job->start_recruitment)->format('d M Y') }} - {{ Carbon\Carbon::parse($job->end_recruitment)->format('d M Y') }} <br> Terbuka Untuk: {{ $job->people_needed }} Orang</small></p>
+                <hr>
                 <p class="card-text">
-                    Details about job position.
+                    <strong>Requirement:</strong>
+                    <small class="card-text d-block mb-2">
+                        {!! nl2br(e($job->requirement)) !!}
+                    </small>
+                </p>
+                <p class="mt-2">
+                    <span class="me-2"><i class="bx bx-phone-call"></i></span>{{ $job->contact }}
                 </p>
                 @auth
                 @if (Auth::user()->role === 'admin')
@@ -197,5 +212,6 @@
             </div>
         </div>
     </div>
+    @endforeach
 </div>
 @endsection

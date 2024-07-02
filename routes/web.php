@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/jobs', [JobsController::class, 'index'])->name('jobs');
     Route::post('/jobs', [JobsController::class, 'store'])->name('jobs.store');
+    Route::put('/jobs/{id}', [JobsController::class, 'update'])->name('jobs.update');
 });
 
 Route::get('/job-list', [JobsController::class, 'index'])->name('jobs');
