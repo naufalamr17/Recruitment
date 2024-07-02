@@ -30,4 +30,11 @@ class LoginBasic extends Controller
 
     return redirect('/dashboard');
   }
+
+  public function destroy()
+    {
+        auth()->logout();
+
+        return redirect('/login');
+    }
 }

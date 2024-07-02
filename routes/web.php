@@ -46,8 +46,10 @@ use App\Http\Controllers\tables\Basic as TablesBasic;
 
 Route::get('login', [LoginBasic::class, 'index'])->name('login');
 Route::post('login-process', [LoginBasic::class, 'store'])->name('login-process');
+Route::post('sign-out', [LoginBasic::class, 'destroy'])->middleware('auth')->name('logout');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', [Analytics::class, 'index'])->name('dashboard-analytics');
     Route::get('/dashboard', [Analytics::class, 'index'])->name('dashboard-analytics');
 });
 

@@ -33,7 +33,19 @@ $navbarDetached = ($navbarDetached ?? '');
       @endif
 
       <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        Halo {{ Auth::user()->name ?? '' }}
+        <span class="me-2">Halo {{ Auth::user()->name ?? '' }}</span>
+
+        <form method="POST" action="{{ route('logout') }}" class="d-none" id="logout-form">
+          @csrf
+        </form>
+
+        <!-- Spacer to push logout button to the right -->
+        <div class="ms-auto d-flex align-items-center">
+          <!-- Tombol Logout -->
+          <a href="#" class="btn btn-outline-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="bx bx-log-out"></i>
+          </a>
+        </div>
       </div>
 
       @if(!isset($navbarDetached))
