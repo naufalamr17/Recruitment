@@ -236,7 +236,13 @@
 
 <script>
     $(document).ready(function() {
-        // Script to filter jobs based on status
+        // Initialize Masonry
+        var $grid = $('.row').masonry({
+            itemSelector: '.job-item',
+            percentPosition: true
+        });
+
+        // Filter jobs
         $('.filter-job').click(function(e) {
             e.preventDefault();
             var status = $(this).data('status');
@@ -248,6 +254,9 @@
             if (status !== 'all') {
                 $('.job-item').not('[data-status="' + status + '"]').hide();
             }
+
+            // Layout Masonry after filtering
+            $grid.masonry('layout');
         });
     });
 </script>
