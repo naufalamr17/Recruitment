@@ -41,7 +41,7 @@
                         <label class="form-label" for="basic-icon-default-fullname">Position</label>
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                            <input type="text" name="position" class="form-control" id="basic-icon-default-fullname" placeholder="Job Position" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" />
+                            <input type="text" name="position" class="form-control" id="basic-icon-default-fullname" placeholder="Job Position" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2"/>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -76,7 +76,7 @@
                         <label class="form-label" for="basic-icon-default-phone">Contact</label>
                         <div class="input-group input-group-merge">
                             <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span>
-                            <input type="number" name="contact" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
+                            <input type="number" name="contact" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" value="0818764971" />
                         </div>
                     </div>
                     <div class="mb-3">
@@ -99,7 +99,6 @@
                         <button type="submit" class="btn btn-primary">Send</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
