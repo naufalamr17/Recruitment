@@ -26,49 +26,64 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label class="form-label" for="basic-icon-default-fullname">Position</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                                <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Job Position" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" />
-                            </div>
+                <form action="{{ route('jobs.store') }}" method="POST">
+                    @csrf
+                    <!-- form fields here -->
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-fullname">Position</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-buildings"></i></span>
+                            <input type="text" name="position" class="form-control" id="basic-icon-default-fullname" placeholder="Job Position" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" />
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="basic-icon-default-message">Requirement</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-message2" class="input-group-text"><i class="bx bx-list-ul"></i></span>
-                                <textarea id="basic-icon-default-message" class="form-control" placeholder="Job Requirement" aria-describedby="basic-icon-default-message2"></textarea>
-                            </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-message">Requirement</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-message2" class="input-group-text"><i class="bx bx-list-ul"></i></span>
+                            <textarea id="basic-icon-default-message" name="requirement" class="form-control" placeholder="Job Requirement" aria-describedby="basic-icon-default-message2"></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="basic-icon-default-phone">Start Recruitment</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-calendar-alt"></i></span>
-                                <input type="date" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
-                            </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-phone">Start Recruitment</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-calendar-alt"></i></span>
+                            <input type="date" name="start_recruitment" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="basic-icon-default-phone">End Recruitment</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-calendar-alt"></i></span>
-                                <input type="date" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
-                            </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-phone">End Recruitment</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-calendar-alt"></i></span>
+                            <input type="date" name="end_recruitment" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="basic-icon-default-phone">People Needed</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-user"></i></span>
-                                <input type="number" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Number of people needed" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
-                            </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-phone">People Needed</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-user"></i></span>
+                            <input type="number" name="people_needed" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Number of people needed" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="basic-icon-default-phone">Contact</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span>
-                                <input type="number" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
-                            </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-icon-default-phone">Contact</label>
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span>
+                            <input type="number" name="contact" id="basic-icon-default-phone" class="form-control phone-mask" placeholder="Phone Number" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <small class="text-light fw-medium d-block">Status</small>
+                        <div class="form-check form-check-inline mt-3">
+                            <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="open" />
+                            <label class="form-check-label badge bg-label-success" for="inlineRadio1">Open</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="hold" />
+                            <label class="form-check-label badge bg-label-secondary" for="inlineRadio2">Hold</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="status" id="inlineRadio3" value="closed" />
+                            <label class="form-check-label badge bg-label-danger" for="inlineRadio3">Closed</label>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -76,6 +91,7 @@
                         <button type="submit" class="btn btn-primary">Send</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
@@ -178,75 +194,6 @@
                 @else
                 <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
                 @endauth
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 mb-4">
-        <div class="card p-3">
-            <figure class="p-3 mb-0">
-                <blockquote class="blockquote">
-                    <p>A well-known quote, contained in a blockquote element.</p>
-                </blockquote>
-                <figcaption class="blockquote-footer mb-0 text-muted">
-                    Someone famous in <cite title="Source Title">Source Title</cite>
-                </figcaption>
-            </figure>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 mb-4">
-        <div class="card">
-            <img class="card-img-top" src="{{asset('assets/img/elements/18.jpg')}}" alt="Card image cap" />
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 mb-4">
-        <div class="card bg-primary text-white text-center p-3">
-            <figure class="mb-0">
-                <blockquote class="blockquote">
-                    <p>A well-known quote, contained in a blockquote element.</p>
-                </blockquote>
-                <figcaption class="blockquote-footer mb-0 text-white">
-                    Someone famous in <cite title="Source Title">Source Title</cite>
-                </figcaption>
-            </figure>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 mb-4">
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has a regular title and short paragraph of text below it.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 mb-4">
-        <div class="card">
-            <img class="card-img-top" src="{{asset('assets/img/elements/4.jpg')}}" alt="Card image cap" />
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 mb-4">
-        <div class="card p-3 text-end">
-            <figure class="mb-0">
-                <blockquote class="blockquote">
-                    <p>A well-known quote, contained in a blockquote element.</p>
-                </blockquote>
-                <figcaption class="blockquote-footer mb-0 text-muted">
-                    Someone famous in <cite title="Source Title">Source Title</cite>
-                </figcaption>
-            </figure>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 mb-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
         </div>
     </div>
