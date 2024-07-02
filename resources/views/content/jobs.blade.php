@@ -8,7 +8,15 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center pb-1 mb-4">
-    <h6 class="text-muted">Jobs at MLP Mining</h6>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter by Status
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item filter-job" href="#" data-status="all">All</a></li>
+        <li><a class="dropdown-item filter-job" href="#" data-status="open">Open</a></li>
+        <li><a class="dropdown-item filter-job" href="#" data-status="hold">Hold</a></li>
+        <li><a class="dropdown-item filter-job" href="#" data-status="closed">Closed</a></li>
+    </ul>
     @auth
     @if (Auth::user()->role === 'admin')
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollable">
@@ -98,8 +106,8 @@
 </div>
 <div class="row" data-masonry='{"percentPosition": true }'>
     @foreach($jobs as $job)
-    <div class="col-sm-6 col-lg-4 mb-4">
-        <div class="card">
+    <div class="col-sm-6 col-lg-4 mb-4 job-item" data-status="{{ strtolower($job->status) }}">
+        <div class=" card">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                     <h5>{{ $job->position }}</h5>
@@ -223,4 +231,24 @@
     </div>
     @endforeach
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Script to filter jobs based on status
+        $('.filter-job').click(function(e) {
+            e.preventDefault();
+            var status = $(this).data('status');
+
+            // Show all jobs
+            $('.job-item').show();
+
+            // Filter jobs by status
+            if (status !== 'all') {
+                $('.job-item').not('[data-status="' + status + '"]').hide();
+            }
+        });
+    });
+</script>
 @endsection
