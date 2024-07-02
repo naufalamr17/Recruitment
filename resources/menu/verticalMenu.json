@@ -7,6 +7,30 @@
       "url": "/"
     },
     {
+      "name": "Jobs",
+      "icon": "menu-icon tf-icons bx bx-briefcase bx-flashing-hover",
+      "slug": "jobs",
+      "url": "/"
+    },
+    {
+      "name": "Progress",
+      "icon": "menu-icon tf-icons bx bx-trip bx-flashing-hover",
+      "slug": "progress",
+      "url": "/"
+    },
+    {
+      "name": "Applicant",
+      "icon": "menu-icon tf-icons bx bx-group bx-flashing-hover",
+      "slug": "applicant",
+      "url": "/"
+    },
+    {
+      "name": "Admin Center",
+      "icon": "menu-icon tf-icons bx bx-dock-bottom bx-flashing-hover",
+      "slug": "admin",
+      "url": "/"
+    },
+    {
       "name": "Layouts",
       "icon": "menu-icon tf-icons bx bx-layout",
       "slug": "layouts",
